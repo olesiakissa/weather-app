@@ -18,7 +18,7 @@ export const API_CALL_SEARCH : string = 'http://api.openweathermap.org/geo/1.0/d
  * - Response format (json by default) : mode={xml | html} 
  * - Units of measurement: units={standard | metric | imperial}
  */
-export const API_CALL_LOCATION : string = 'https://api.openweathermap.org/data/2.5/weather?'
+export const API_CALL_LOCATION : string = 'https://api.openweathermap.org/data/2.5/forecast?'
 
 /**
  * A number for a dropdown list of location options
