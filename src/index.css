@@ -1,0 +1,115 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --clr-violet: #B092B0;
+}
+
+/* some utility classes */
+.flex { display: flex; }
+
+.grid { display: grid; }
+
+/* standard reset & setup */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+input, 
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input {
+  height: 3rem;
+  font-size: 0.95rem;
+  padding-inline-start: 0.5rem;
+  flex: 1;
+  background-color: #FFF;
+  border-radius: 15px 0 0 15px;
+  color: var(--clr-violet);
+}
+
+#search-btn {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0 15px 15px 0;
+  color: #FFF;
+  background-color: var(--clr-violet); 
+}
+
+#svg-icon {
+  position: relative;
+  height: 0.75rem;
+  width:  0.75rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); 
+  white-space: nowrap;
+}
+
+/* todo: split into css modules later based on components */
+
+#location-search {
+  position: relative;
+}
+
+#locations {
+  position: absolute;
+  top: 3rem;
+}
+
+.location-option {
+  /* according to color theme in design */
+}
