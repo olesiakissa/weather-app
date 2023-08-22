@@ -1,0 +1,40 @@
+@import './variables.scss';
+
+
+@mixin scrollbar {
+  * {
+    scrollbar-width: none;
+    scrollbar-color: $violet $white;
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: $white;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: $violet;
+        border-radius: 50px;
+        border: 5px solid $white;
+    }
+  }
+}
+
+@mixin body-bg {
+    background: url('./assets/bg_scale_864.png'); 
+    background-repeat: no-repeat;
+    background-position: 50% 35%;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+        background: url('./assets/bg_scale_1161.png');
+        background-size: cover;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop) {
+        background: url('./assets/bg_scale_1287.png');
+        background-size: cover;
+        background-position: center center;
+    }
+}

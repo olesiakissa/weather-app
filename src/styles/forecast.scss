@@ -1,0 +1,57 @@
+$icon-size: 18px;
+$row-height-mob: 165px;
+
+$tile-bg: #2E245C;
+$grey: #A5A6B3;
+$text-color: #FFFFFF;
+
+#carrousel {
+    display: flex;
+    padding-block-end: 0.625rem;
+    overflow-x: scroll;
+    cursor: pointer;
+
+    // Hour in figma
+    .item {
+        flex-shrink: 0;
+        width: 50px;
+        margin-inline: 1.25rem;
+    }
+}
+
+#tiles {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: $row-height-mob;
+}
+
+.tile {
+    background-color: $tile-bg;
+    border-radius: 25px;
+    padding: 1.25rem;
+
+    p {
+        color: $text-color;
+    }
+}
+
+.tile-header {
+    text-transform: uppercase;
+    color: $grey;
+    font-weight: 500;
+
+    &:before {
+        display: inline-block;
+        margin-inline-end: 8px;
+        content: '';
+        width: $icon-size;
+        height: $icon-size;
+    }
+
+    &#sunlight-header {
+        background: url('../../src/assets/sunrise.svg') no-repeat;
+    }
+
+    &#humidity-header {
+        background: url('../../src/assets/humidity.svg') no-repeat;
+    }
+}
