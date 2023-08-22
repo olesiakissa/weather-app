@@ -1,7 +1,7 @@
-// todo 1: LOCATION PERMISSION CHECK + REFACTOR (for Search component)
+// todo 1: LOCATION PERMISSION CHECK
 
 import { ChangeEvent, useEffect, useState } from "react"
-import { API_CALL_SEARCH, API_CALL_LIMIT, API_CALL_LOCATION } from "../constants"
+import { API_CALL_SEARCH, API_CALL_LIMIT, API_CALL_LOCATION, API_UNITS } from "../constants"
 import { OptionType, ForecastType } from "../types"
 
 
@@ -56,7 +56,8 @@ const useForecast = () => {
 
       const {lat, lon} = location
       try {
-        const query = `${API_CALL_LOCATION}lat=${lat}&lon=${lon}&units={metric}&appid=${import.meta.env.VITE_APP_API_KEY}`
+        const query = 
+          `${API_CALL_LOCATION}lat=${lat}&lon=${lon}&units=${API_UNITS}&appid=${import.meta.env.VITE_APP_API_KEY}`
         const response = await fetch(query)
         if (!response.ok) {
           throw new Error(`${response.status}: An error occurred while trying to weather for a specified location`)
@@ -67,7 +68,6 @@ const useForecast = () => {
             ...data.city,
             list: data.list.slice(0, 16)
         }
-        console.info(forecastData)
         setForecast(forecastData)
       } catch (error) {
         console.error(error)

@@ -24,3 +24,5 @@ export const API_CALL_LOCATION : string = 'https://api.openweathermap.org/data/2
  * A number for a dropdown list of location options
  */
 export const API_CALL_LIMIT : number = 5
+
+export const API_UNITS : string = 'metric'

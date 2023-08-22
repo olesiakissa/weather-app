@@ -1,5 +1,7 @@
 
 import Search from './components/Search'
+import Forecast from './components/Forecast'
+
 import useForecast from './hooks/useForecast'
 
 const App = (): JSX.Element => {
@@ -15,10 +17,10 @@ const App = (): JSX.Element => {
 
     return (
       <main>
-        <h1>{location ? location.name : 'Enter Location'}</h1>
+        <h1>{location ? location.name : 'Weather'}</h1>
         {forecast ? 
         (
-          <section>{forecast.sunrise}</section>
+          <Forecast data={forecast}/>
         ) 
         : 
         (

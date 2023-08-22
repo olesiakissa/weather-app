@@ -13,7 +13,7 @@ const Search = ({options,
         <section id='location-search' className='flex'>
         <input type="search" 
                 value={searchInput}
-                placeholder='Search for a city or a country'
+                placeholder='Search for a city'
                 onChange={(e) => onInputChange(e)}/> 
         <button id='search-btn' onClick={() => getForecast()}>
         <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
