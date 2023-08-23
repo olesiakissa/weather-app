@@ -25,7 +25,11 @@ const Forecast = ( { data }: ForecastType): JSX.Element => {
 
         {/* Additional tiles */}
         <section className='grid' id='tiles'>
-          <Sunlight sunrise={data.sunrise} sunset={data.sunset} />
+          <Sunlight 
+            sunrise={data.sunrise} 
+            sunset={data.sunset} 
+            timezone={data.timezone}/>
+                      
         </section>
     </article>
   )
