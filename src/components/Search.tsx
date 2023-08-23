@@ -24,14 +24,13 @@ const Search = ({options,
             </span>
         </button>
 
-        {/* todo: create a location component */}
         <section id='locations'>
             <ul>
             {options.length > 0 && options.map( (option: OptionType) => (
                 <li key={nanoid()}>
                 <button className='location-option'
                         onClick={() => onOptionSelect(option)}>
-                            {option.name}
+                            {option.name}, {option.country}
                 </button>
                 </li>
             ))}
