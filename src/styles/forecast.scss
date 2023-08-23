@@ -1,7 +1,18 @@
-$icon-size: 18px;
+@import './mixins.scss';
+
+// dimensions
+$icon-w: 16px;
+$icon-h: 25px;
+
+// grid
+$grid-row-gap: 20px;
+$grid-col-gap: 20px;
 $row-height-mob: 165px;
 
+// colors
 $tile-bg: #2E245C;
+$grid-bg: #2D2A56;
+$tile-border: #CAB0FF;
 $grey: #A5A6B3;
 $text-color: #FFFFFF;
 
@@ -20,17 +31,30 @@ $text-color: #FFFFFF;
 }
 
 #tiles {
-    grid-template-columns: repeat(2, 1fr);
+    height: 100vh;
+    padding: 20px;
+    grid-template-columns: repeat(2, 160px);
     grid-template-rows: $row-height-mob;
+    grid-row-gap: $grid-row-gap;
+    grid-column-gap: $grid-col-gap;
+    @include tiles-gradient;
 }
 
 .tile {
     background-color: $tile-bg;
+    border: 1px solid $tile-border;
     border-radius: 25px;
     padding: 1.25rem;
+    flex-direction: column;
 
     p {
         color: $text-color;
+        font-size: 0.8rem;
+    }
+
+    .tile-large-text {
+        font-size: 1.6rem;
+        margin-bottom: auto;
     }
 }
 
@@ -38,13 +62,15 @@ $text-color: #FFFFFF;
     text-transform: uppercase;
     color: $grey;
     font-weight: 500;
+    font-size: 0.9rem;
 
     &:before {
         display: inline-block;
         margin-inline-end: 8px;
         content: '';
-        width: $icon-size;
-        height: $icon-size;
+        width: $icon-w;
+        height: $icon-h;
+        vertical-align: sub;
     }
 
     &#sunlight-header {
@@ -54,4 +80,12 @@ $text-color: #FFFFFF;
     &#humidity-header {
         background: url('../../src/assets/humidity.svg') no-repeat;
     }
+}
+
+#tile-sunlight {
+    background-image: url('../../src/assets/sun_bg_line.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 110%;
+    background-blend-mode: overlay;
 }

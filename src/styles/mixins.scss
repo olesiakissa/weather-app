@@ -38,3 +38,28 @@
         background-position: center center;
     }
 }
+
+@mixin tiles-gradient {
+    background: linear-gradient(296deg, #281947, #150f21);
+    background-size: 100% 100%;
+
+    -webkit-animation: gradientAnimation 48s ease infinite;
+    -moz-animation: gradientAnimation 48s ease infinite;
+    animation: gradientAnimation 48s ease infinite;
+
+    @-webkit-keyframes gradientAnimation {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @-moz-keyframes gradientAnimation {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    @keyframes gradientAnimation {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+}
