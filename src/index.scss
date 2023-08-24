@@ -19,6 +19,8 @@
 /* some utility classes */
 .flex { display: flex; }
 
+.col { flex-direction: column; }
+
 .grid { display: grid; }
 
 body {

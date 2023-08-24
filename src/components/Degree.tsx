@@ -1,6 +1,11 @@
-const Degree = ({ temp }: { temp: number }): JSX.Element => (
+interface Props {
+  temp: number
+  spanId?: string | undefined
+}
+
+const Degree = ({temp, spanId = ''} : Props): JSX.Element => (
     <>
-      <span>
+      <span id={spanId}>
         {temp}
         <sup>o</sup>
       </span>

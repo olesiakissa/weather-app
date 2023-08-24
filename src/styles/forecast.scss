@@ -12,15 +12,67 @@ $row-height-mob: 165px;
 // colors
 $tile-bg: #2E245C;
 $grid-bg: #2D2A56;
+$dark-bg: #150F21;
 $tile-border: #CAB0FF;
 $grey: #A5A6B3;
 $text-color: #FFFFFF;
 
+#forecast {
+    padding-block-start: 6rem;
+    backdrop-filter: blur(1px);
+}
+
+// hero section
+#hero {
+    align-items: center;
+    color: $text-color;
+
+    #degree {
+        font-size: 6rem;
+        font-style: normal;
+        font-weight: 200;
+        line-height: 4.375rem; 
+        letter-spacing: 0.02338rem;
+        margin-block: -1.25rem 0.75rem;
+    }
+
+    p {
+        font-weight: 600;
+        line-height: 1.5rem;
+        letter-spacing: 0.02375rem;
+    }
+
+    #description {
+        text-transform: uppercase;
+        // color: $grey;
+        // opacity: 0.6;
+    }
+
+    img {
+        width: 90%;
+        margin-block-start: -15%;
+        z-index: -1;
+        filter: blur(1px);
+    }
+}
+
+
+
+#hero-heading {
+    font-size: 2.125rem;
+    font-weight: 400;
+    line-height: 2.5625rem; /* 120.588% */
+    letter-spacing: 0.02338rem;
+}
+
 #carrousel {
     display: flex;
     padding-block-end: 0.625rem;
+    margin-block-start: -125px;
     overflow-x: scroll;
     cursor: pointer;
+    background-color: $dark-bg;
+    border-radius: 30px 30px 0 0;
 
     // Hour in figma
     .item {
@@ -45,7 +97,6 @@ $text-color: #FFFFFF;
     border: 1px solid $tile-border;
     border-radius: 25px;
     padding: 1.25rem;
-    flex-direction: column;
 
     p {
         color: $text-color;

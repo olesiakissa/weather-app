@@ -9,7 +9,7 @@ type Props = {
 
 const Sunlight = ({sunrise, sunset, timezone}: Props): JSX.Element => {
   return (
-    <article className='tile flex' id='tile-sunlight'>
+    <article className='tile flex col' id='tile-sunlight'>
         <TileHeader 
           tileId='sunlight' 
           heading='SUNRISE' 

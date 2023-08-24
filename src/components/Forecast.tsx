@@ -1,16 +1,18 @@
 import { ForecastType, ForecastItemType } from '../types'
 import Degree from './Degree'
 import Sunlight from './Sunlight'
+import Hero from './Hero'
 
 const Forecast = ( { data }: ForecastType): JSX.Element => {
   const [ today ] = data.list
   return (
-    <article>
-        <section>
-            <h1>
-              <Degree temp={Math.round(today.main.temp)} />
-            </h1>
-        </section>
+    <article id='forecast'>
+        <Hero 
+          name={data.name}
+          desc={today.weather[0].description}
+          temp={Math.round(today.main.temp)}
+          max={Math.round(today.main.temp_max)}
+          min={Math.round(today.main.temp_min)} />
 
         <section id="carrousel">
           {data.list.map((item: ForecastItemType, index: number) => (
@@ -28,8 +30,7 @@ const Forecast = ( { data }: ForecastType): JSX.Element => {
           <Sunlight 
             sunrise={data.sunrise} 
             sunset={data.sunset} 
-            timezone={data.timezone}/>
-                      
+            timezone={data.timezone} />           
         </section>
     </article>
   )
