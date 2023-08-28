@@ -19,7 +19,7 @@ $text-color: #FFFFFF;
 
 #forecast {
     padding-block-start: 6rem;
-    backdrop-filter: blur(1px);
+    @include dark-blur;
 }
 
 // hero section
@@ -44,15 +44,14 @@ $text-color: #FFFFFF;
 
     #description {
         text-transform: uppercase;
-        // color: $grey;
-        // opacity: 0.6;
     }
 
     img {
         width: 90%;
         margin-block-start: -15%;
         z-index: -1;
-        filter: blur(1px);
+        filter: brightness(70%);
+        opacity: 0.5;
     }
 }
 
