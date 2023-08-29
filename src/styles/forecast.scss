@@ -25,15 +25,23 @@ $text-color: #FFFFFF;
 // hero section
 #hero {
     align-items: center;
+    text-align: center;
     color: $text-color;
 
     #degree {
         font-size: 6rem;
         font-style: normal;
-        font-weight: 200;
+        font-weight: 400;
         line-height: 4.375rem; 
         letter-spacing: 0.02338rem;
-        margin-block: -1.25rem 0.75rem;
+        margin-block: 0.75rem;
+        position: relative;
+
+        sup { 
+            font-size: 3rem;
+            position: absolute;
+            top: -30px;
+        }
     }
 
     p {
@@ -44,6 +52,10 @@ $text-color: #FFFFFF;
 
     #description {
         text-transform: uppercase;
+        margin-block-start: 0.5rem;
+        font-weight: 400;
+        font-size: 0.9rem;
+        opacity: 0.8;
     }
 
     img {
