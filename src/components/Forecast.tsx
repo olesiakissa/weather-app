@@ -14,10 +14,12 @@ const Forecast = ( { data }: ForecastType): JSX.Element => {
           max={Math.round(today.main.temp_max)}
           min={Math.round(today.main.temp_min)} />
 
-        <section id="carrousel">
+        <section id='carrousel' className='flex'>
           {data.list.map((item: ForecastItemType, index: number) => (
-            <div key={index} className='item'>
-              <p>{index === 0 ? 'Now' : `${new Date(item.dt * 1000).getHours()}:00`}</p>
+            <div key={index} className='item flex col' id={index === 0 ? 'current' : ''}>
+              <p>
+                {index === 0 ? 'Now' : `${new Date(item.dt * 1000).getHours()}:00`}
+              </p>
               <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} 
                    alt={item.weather[0].description} />
               <Degree temp={Math.round(item.main.temp)} />

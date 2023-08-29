@@ -1,3 +1,4 @@
+@import './variables.scss';
 @import './mixins.scss';
 
 // dimensions
@@ -10,7 +11,7 @@ $grid-col-gap: 20px;
 $row-height-mob: 165px;
 
 // colors
-$tile-bg: #2E245C;
+$tile-bg: $dark-violet;
 $grid-bg: #2D2A56;
 $dark-bg: #150F21;
 $tile-border: #CAB0FF;
@@ -77,19 +78,35 @@ $text-color: #FFFFFF;
 }
 
 #carrousel {
-    display: flex;
     padding-block-end: 0.625rem;
-    margin-block-start: -125px;
+    margin-block-start: -140px;
     overflow-x: scroll;
     cursor: pointer;
     background-color: $dark-bg;
+    color: $white;
     border-radius: 30px 30px 0 0;
+    border-top: 1px solid #814bff8c;
+    box-shadow: 0px -12px 60px 1px rgba(202, 176, 255, 0.4);
 
     // Hour in figma
     .item {
         flex-shrink: 0;
+        align-items: center;
         width: 50px;
-        margin-inline: 1.25rem;
+        margin-inline: 1rem;
+        margin-block-start: 0.625rem;
+        padding-block: 1rem 0.5rem;
+        border-radius: 30px;
+        background-color: #211B37;
+        box-shadow: 0px 2px 3px 0px rgb(58 74 185 / 55%) inset;
+
+        &#current {
+            @include temp-gradient;
+        }
+
+        p { font-weight: 600; }
+
+        span { font-weight: 400; }
     }
 }
 

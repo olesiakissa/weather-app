@@ -4,20 +4,19 @@
 @mixin scrollbar {
   * {
     scrollbar-width: none;
-    scrollbar-color: $violet $white;
 
     ::-webkit-scrollbar {
-        width: 8px;
+        width: 10px;
     }
 
     ::-webkit-scrollbar-track {
-        background: $white;
+        background: transparent;
     }
 
     ::-webkit-scrollbar-thumb {
-        background-color: $violet;
+        background-color: $blue-accent;
         border-radius: 50px;
-        border: 5px solid $white;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25) inset;
     }
   }
 }
@@ -37,6 +36,10 @@
         background-size: cover;
         background-position: center center;
     }
+}
+
+@mixin temp-gradient {
+    background: linear-gradient(0deg, rgba(33,27,55,1) 0%, rgba(92,63,153,0.6250875350140056) 100%);
 }
 
 @mixin tiles-gradient {
