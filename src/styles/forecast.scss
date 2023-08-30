@@ -68,8 +68,6 @@ $text-color: #FFFFFF;
     }
 }
 
-
-
 #hero-heading {
     font-size: 2.125rem;
     font-weight: 400;
@@ -111,10 +109,14 @@ $text-color: #FFFFFF;
 }
 
 #tiles {
-    height: 100vh;
     padding: 20px;
-    grid-template-columns: repeat(2, 160px);
-    grid-template-rows: $row-height-mob;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 150px);
+    grid-auto-rows: $row-height-mob;
+    grid-template-areas: 
+    "sunlight pressure"
+    "humidity visibility"
+    "wind feels_like";
     grid-row-gap: $grid-row-gap;
     grid-column-gap: $grid-col-gap;
     @include tiles-gradient;
@@ -125,9 +127,10 @@ $text-color: #FFFFFF;
     border: 1px solid $tile-border;
     border-radius: 25px;
     padding: 1.25rem;
+    color: $text-color;
+    height: 100%;
 
     p {
-        color: $text-color;
         font-size: 0.8rem;
     }
 
@@ -145,7 +148,7 @@ $text-color: #FFFFFF;
 
     &:before {
         display: inline-block;
-        margin-inline-end: 8px;
+        margin-inline-end: 12px;
         content: '';
         width: $icon-w;
         height: $icon-h;
@@ -153,18 +156,61 @@ $text-color: #FFFFFF;
     }
 
     &#sunlight-header {
-        background: url('../../src/assets/sunrise.svg') no-repeat;
+        background: url('../../src/assets/icons/sunrise.svg') no-repeat;
     }
 
     &#humidity-header {
-        background: url('../../src/assets/humidity.svg') no-repeat;
+        background: url('../../src/assets/icons/humidity.svg') no-repeat;
+    }
+
+    &#pressure-header {
+        background: url('../../src/assets/icons/pressure.svg') no-repeat;
+    }
+
+    &#visibility-header {
+        background: url('../../src/assets/icons/visibility.svg') no-repeat;
+    }
+
+    &#wind-header {
+        background: url('../../src/assets/icons/wind.svg') no-repeat;
+        background-size: contain;
+    }
+
+    &#feels-like-header {
+        background: url('../../src/assets/icons/temp.svg') no-repeat;
+        background-size: contain;
     }
 }
 
 #tile-sunlight {
+    grid-area: sunlight;
     background-image: url('../../src/assets/sun_bg_line.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 110%;
     background-blend-mode: overlay;
+}
+
+#tile-pressure {
+    grid-area: pressure;
+}
+
+#tile-humidity {
+    grid-area: humidity;
+}
+
+#tile-visibility {
+    grid-area: visibility;
+}
+
+#tile-wind {
+    grid-area: wind;
+}
+
+#tile-feels-like {
+    grid-area: feels_like;
+}
+
+#feels-like {
+    font-size: 4rem;
 }
