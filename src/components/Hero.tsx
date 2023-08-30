@@ -1,4 +1,4 @@
-import Degree from './Degree'
+import Degree from './forecast/Degree'
 import Home from '../assets/house.png'
 
 type Props = {

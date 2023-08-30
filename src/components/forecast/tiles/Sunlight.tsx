@@ -1,5 +1,5 @@
-import TileHeader from './tiles/TileHeader'
-import { getTime } from '../utils'
+import TileHeader from './TileHeader'
+import { getTime } from '../../../utils'
 
 type Props = {
   sunrise: number

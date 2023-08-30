@@ -3,7 +3,7 @@ interface Props {
   spanId?: string | undefined
 }
 
-const Degree = ({temp, spanId = ''} : Props): JSX.Element => (
+const Degree = ({temp, spanId} : Props): JSX.Element => (
     <>
       <span id={spanId}>
         {temp}
