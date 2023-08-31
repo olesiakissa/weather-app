@@ -1,20 +1,19 @@
+import { useContext } from 'react'
+import { AppContext } from '../../../App'
+
 import TileHeader from './TileHeader'
 import { getTime } from '../../../utils'
 
-type Props = {
-  sunrise: number
-  sunset: number
-  timezone: number
-}
-
-const Sunlight = ({sunrise, sunset, timezone}: Props): JSX.Element => {
+const Sunlight = (): JSX.Element => {
+  const { forecast } = useContext(AppContext)
+  
   return (
     <article className='tile flex col' id='tile-sunlight'>
         <TileHeader 
           tileId='sunlight' 
           heading='SUNRISE' 
-          text={getTime(sunrise + timezone)} />
-        <p>Sunset: {getTime(sunset + timezone)}PM</p>
+          text={getTime(forecast.sunrise + forecast.timezone)} />
+        <p>Sunset: {getTime(forecast.sunset + forecast.timezone)}PM</p>
     </article>
   )
 }

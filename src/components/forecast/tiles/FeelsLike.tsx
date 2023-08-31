@@ -1,17 +1,23 @@
+import { useContext } from 'react'
+import { AppContext } from '../../../App'
+
 import Degree from '../Degree'
 import TileHeader from './TileHeader'
 
-type Props = { temp: number }
+const FeelsLike = () : JSX.Element => {
+	const { forecast } = useContext(AppContext)
+	const [ today ] = forecast.list
 
-const FeelsLike = ({ temp }: Props) : JSX.Element => {
-    return (
-        <article className='tile flex col' id='tile-feels'>
-            <TileHeader 
-                tileId='feels-like' 
-                heading='FEELS LIKE' />
-            <Degree temp={temp} spanId='feels-like'/>
-        </article>
-    )
+	return (
+		<article className='tile flex col' id='tile-feels'>
+			<TileHeader 
+					tileId='feels-like' 
+					heading='FEELS LIKE' />
+			<Degree 
+				temp={Math.round(today.main.feels_like)} 
+				spanId='feels-like'/>
+		</article>
+	)
 }
 
 export default FeelsLike

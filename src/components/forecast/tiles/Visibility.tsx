@@ -1,18 +1,22 @@
+import { useContext } from 'react'
+import { AppContext } from '../../../App'
+
 import TileHeader from './TileHeader'
 import { getVisibilityDescription, getVisibilityValueInKm } from '../../../utils'
 
-type Props = { visibility: number }
+const Visibility = (): JSX.Element => {
+	const { forecast } = useContext(AppContext)
+  const [ today ] = forecast.list
 
-const Visibility = ({ visibility }: Props): JSX.Element => {
-    return (
-        <article className='tile flex col' id='tile-visibility'>
-            <TileHeader 
-                tileId='visibility' 
-                heading='VISIBILITY' />
-            <p className='tile-large-text'>{getVisibilityValueInKm(visibility)} km</p>    
-            <p>{getVisibilityDescription(visibility)}</p>
-        </article>
-    )
+	return (
+		<article className='tile flex col' id='tile-visibility'>
+			<TileHeader 
+					tileId='visibility' 
+					heading='VISIBILITY' />
+			<p className='tile-large-text'>{getVisibilityValueInKm(today.visibility)} km</p>    
+			<p>{getVisibilityDescription(today.visibility)}</p>
+		</article>
+	)
 }
 
 export default Visibility

@@ -1,18 +1,22 @@
+import { useContext } from 'react'
+import { AppContext } from '../../../App'
+
 import TileHeader from './TileHeader'
 import { getPressureDescription } from '../../../utils'
 
-type Props = { pressure: number }
+const Pressure = () : JSX.Element => {
+  const { forecast } = useContext(AppContext)
+  const [ today ] = forecast.list
 
-const Pressure = ({ pressure }: Props) : JSX.Element => {
-    return (
-        <article className='tile flex col' id='tile-pressure'>
-            <TileHeader 
-                tileId='pressure' 
-                heading='PRESSURE' />
-            <p className='tile-large-text'>{pressure} hPa</p>    
-            <p>{getPressureDescription(pressure)}</p>
-        </article>
-    )
+	return (
+		<article className='tile flex col' id='tile-pressure'>
+			<TileHeader 
+					tileId='pressure' 
+					heading='PRESSURE' />
+			<p className='tile-large-text'>{today.main.pressure} hPa</p>    
+			<p>{getPressureDescription(today.main.pressure)}</p>
+		</article>
+	)
 }
 
 export default Pressure
