@@ -1,4 +1,4 @@
-@import './variables.scss';
+@use './variables.scss' as v;
 
 
 @mixin scrollbar {
@@ -14,7 +14,7 @@
     }
 
     ::-webkit-scrollbar-thumb {
-        background-color: $blue-accent;
+        background-color: v.$blue-accent;
         border-radius: 50px;
         box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25) inset;
     }
@@ -26,12 +26,12 @@
     background-repeat: no-repeat;
     background-position: 50% 35%;
 
-    @media screen and (min-width: $breakpoint-tablet) {
+    @media screen and (min-width: v.$breakpoint-tablet) {
         background: url('./assets/bg_scale_1161.png');
         background-size: cover;
     }
 
-    @media screen and (min-width: $breakpoint-desktop) {
+    @media screen and (min-width: v.$breakpoint-desktop) {
         background: url('./assets/bg_scale_1287.png');
         background-size: cover;
         background-position: center center;
@@ -69,25 +69,25 @@
 
 @mixin placeholder {
     ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-        color: $white;
+        color: v.$white;
     }
     :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-       color: $white;
+       color: v.$white;
        opacity:  1;
     }
     ::-moz-placeholder { /* Mozilla Firefox 19+ */
-       color: $white;
+       color: v.$white;
        opacity:  1;
     }
     :-ms-input-placeholder { /* Internet Explorer 10-11 */
-       color: $white;
+       color: v.$white;
     }
     ::-ms-input-placeholder { /* Microsoft Edge */
-       color: $white;
+       color: v.$white;
     }
     
     ::placeholder { /* Most modern browsers support this now. */
-       color: $white;
+       color: v.$white;
     } 
 }
 

@@ -1,33 +1,17 @@
-@import './variables.scss';
-@import './mixins.scss';
+@use './variables' as v;
+@use './mixins' as m;
 
-// dimensions
-$icon-w: 16px;
-$icon-h: 25px;
-
-// grid
-$grid-row-gap: 20px;
-$grid-col-gap: 20px;
-$row-height-mob: 165px;
-
-// colors
-$tile-bg: $dark-violet;
-$grid-bg: #2D2A56;
-$dark-bg: #150F21;
-$tile-border: #CAB0FF;
-$grey: #A5A6B3;
-$text-color: #FFFFFF;
 
 #forecast {
     padding-block-start: 6rem;
-    @include dark-blur;
+    @include m.dark-blur;
 }
 
 // hero section
 #hero {
     align-items: center;
     text-align: center;
-    color: $text-color;
+    color: v.$text-color;
 
     #degree {
         font-size: 6rem;
@@ -80,8 +64,8 @@ $text-color: #FFFFFF;
     margin-block-start: -140px;
     overflow-x: scroll;
     cursor: pointer;
-    background-color: $dark-bg;
-    color: $white;
+    background-color: v.$dark-bg;
+    color: v.$white;
     border-radius: 30px 30px 0 0;
     border-top: 1px solid #814bff8c;
     box-shadow: 0px -12px 60px 1px rgba(202, 176, 255, 0.4);
@@ -99,7 +83,7 @@ $text-color: #FFFFFF;
         box-shadow: 0px 2px 3px 0px rgb(58 74 185 / 55%) inset;
 
         &#current {
-            @include temp-gradient;
+            @include m.temp-gradient;
         }
 
         p { font-weight: 600; }
@@ -112,22 +96,22 @@ $text-color: #FFFFFF;
     padding: 20px;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 150px);
-    grid-auto-rows: $row-height-mob;
+    grid-auto-rows: v.$row-height-mob;
     grid-template-areas: 
     "sunlight pressure"
     "humidity visibility"
     "wind feels_like";
-    grid-row-gap: $grid-row-gap;
-    grid-column-gap: $grid-col-gap;
-    @include tiles-gradient;
+    grid-row-gap: v.$grid-row-gap;
+    grid-column-gap: v.$grid-col-gap;
+    @include m.tiles-gradient;
 }
 
 .tile {
-    background-color: $tile-bg;
-    border: 1px solid $tile-border;
+    background-color: v.$tile-bg;
+    border: 1px solid v.$tile-border;
     border-radius: 25px;
     padding: 1.25rem;
-    color: $text-color;
+    color: v.$text-color;
     height: 100%;
 
     p {
@@ -142,7 +126,7 @@ $text-color: #FFFFFF;
 
 .tile-header {
     text-transform: uppercase;
-    color: $grey;
+    color: v.$grey;
     font-weight: 500;
     font-size: 0.9rem;
 
@@ -150,8 +134,8 @@ $text-color: #FFFFFF;
         display: inline-block;
         margin-inline-end: 12px;
         content: '';
-        width: $icon-w;
-        height: $icon-h;
+        width: v.$icon-w;
+        height: v.$icon-h;
         vertical-align: sub;
     }
 

@@ -1,11 +1,11 @@
 
-@import './styles/reset.css';
-@import './styles/variables.scss';
-@import './styles/mixins.scss';
-@import './styles/forecast.scss';
+@use './styles/reset.css';
+@use './styles/variables.scss' as v;
+@use './styles/mixins.scss' as m;
+@use './styles/forecast.scss';
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: v.$font-primary, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,10 +14,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
-@include scrollbar;
-@include placeholder;
+@include m.scrollbar;
+@include m.placeholder;
 
-/* some utility classes */
+/* utility classes */
 .flex { display: flex; }
 
 .col { flex-direction: column; }
@@ -25,7 +25,7 @@
 .grid { display: grid; }
 
 body {
-  @include body-bg;
+  @include m.body-bg;
 }
 
 #svg-icon {
@@ -51,11 +51,11 @@ body {
       border-radius: 15px 0 0 15px;
       background: linear-gradient(136deg, rgba(46, 51, 90, 0.28) 0%, rgba(28, 27, 51, 0.99) 100%);
       box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25) inset;
-      height: $input-height;
+      height: v.$input-height;
       font-size: 0.95rem;
       padding-inline-start: 0.75rem;
       flex: 1;
-      color: $white;
+      color: v.$white;
     }
     
 }
@@ -65,15 +65,15 @@ body {
   width: 3rem;
   height: 3rem;
   border-radius: 0 15px 15px 0;
-  color: $white;
-  background-color: $dark-blue;
+  color: v.$white;
+  background-color: v.$dark-blue;
 }
 
 #locations {
   position: absolute;
-  top: calc($input-height + 5%);
+  top: calc(v.$input-height + 5%);
   width: 100%;
-  color: $white;
+  color: v.$white;
 
   * {
     width: 100%;
@@ -83,7 +83,7 @@ body {
 .location-option {
   background: none; 
   padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid $white;
+  border-bottom: 1px solid v.$white;
   text-align: left;
 
   &:hover {
