@@ -1,11 +1,9 @@
-import { useContext } from 'react'
-import { AppContext } from '../App'
-
+import { useAppContext } from '../hooks/useAppContext'
 import Degree from './forecast/Degree'
 import Home from '../assets/house.png'
 
-const Hero = () => {
-  const { forecast } = useContext(AppContext)
+const Hero = (): JSX.Element => {
+  const { forecast } = useAppContext()
   const [ today ] = forecast.list
 
   return (

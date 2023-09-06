@@ -1,11 +1,9 @@
-import { useContext } from 'react'
-import { AppContext } from '../../../App'
-
+import { useAppContext } from '../../../hooks/useAppContext'
 import TileHeader from './TileHeader'
 import { getPressureDescription } from '../../../utils'
 
 const Pressure = () : JSX.Element => {
-  const { forecast } = useContext(AppContext)
+  const { forecast } = useAppContext()
   const [ today ] = forecast.list
 
 	return (

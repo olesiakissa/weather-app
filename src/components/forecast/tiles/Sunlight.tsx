@@ -1,11 +1,9 @@
-import { useContext } from 'react'
-import { AppContext } from '../../../App'
-
+import { useAppContext } from '../../../hooks/useAppContext'
 import TileHeader from './TileHeader'
 import { getTime } from '../../../utils'
 
 const Sunlight = (): JSX.Element => {
-  const { forecast } = useContext(AppContext)
+  const { forecast } = useAppContext()
   
   return (
     <article className='tile flex col' id='tile-sunlight'>

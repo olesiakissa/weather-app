@@ -1,11 +1,9 @@
-import { useContext } from 'react'
-import { AppContext } from '../../App'
-
+import { useAppContext } from '../../hooks/useAppContext'
 import { ForecastItemType } from '../../types/index'
 import Degree from './Degree'
 
 const Carrousel = () => {
-  const { forecast } = useContext(AppContext)
+  const { forecast } = useAppContext()
 
   return (
     <section id='carrousel' className='flex'>
