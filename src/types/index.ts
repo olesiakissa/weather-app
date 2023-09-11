@@ -1,18 +1,8 @@
-import { ChangeEvent } from 'react'
-
 export type OptionType = {
-    name: string
-    country: string
+    name?: string
+    country?: string
     lat: number
     lon: number
-}
-
-export type SearchPropsType = {
-    searchInput: string
-    options: []
-    onInputChange: (e: ChangeEvent<HTMLInputElement>) => void
-    onOptionSelect: (option: OptionType) => void
-    getForecast: () => void
 }
 
 export type ForecastType = {

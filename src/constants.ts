@@ -26,3 +26,6 @@ export const API_CALL_LOCATION : string = 'https://api.openweathermap.org/data/2
 export const API_CALL_LIMIT : number = 5
 
 export const API_UNITS : string = 'metric'
+
+export const WARNING_MSG : string = `This functionality is currently disabled. \n
+Please, allow the application to access location in order to see local weather.`
