@@ -1,32 +1,26 @@
-// todo 1: LOCATION PERMISSION CHECK
-
-import { ChangeEvent, useEffect, useState } from "react"
-import { API_CALL_SEARCH, API_CALL_LIMIT, API_CALL_LOCATION, API_UNITS } from "../constants"
-import { OptionType, ForecastType } from "../types"
-
+import { ChangeEvent, useEffect, useState } from 'react'
+import { API_CALL_SEARCH, API_CALL_LIMIT, API_CALL_LOCATION, API_UNITS } from '../constants'
+import { OptionType, ForecastType } from '../types'
 
 const useForecast = () => {
-    // const [locationPermission, setLocationPermission] = useState<boolean>(false) 
-
-    const [searchInput, setSearchInput] = useState<string>('')
+    const [searchInput, setSearchInput] = useState<string | undefined>('')
     const [location, setLocation] = useState<OptionType | null>(null)
-    const [options, setOptions] = useState<[]>([])
-    const [forecast, setForecast] = useState<ForecastType | null>(null)
+    const [options, setOptions] = useState<[] | undefined>([])
+    const [forecast, setForecast] = useState<ForecastType | undefined>(undefined)
 
-    useEffect(()=>{
+    useEffect(() => {
       if (location) {
+        console.info(location)
+
         setSearchInput(location.name)
         setOptions([])
       }
-
     }, [location])
 
-    // if (navigator.geolocation)
-    //   navigator.geolocation.getCurrentPosition( (position: GeolocationPosition) => {
-    //     // fetch forecast based on position
-    // })
 
     const getSearchLocations = async (value: string) => {
+      if (!value) return
+
       try {
         const query = `${API_CALL_SEARCH}${value}&limit=${API_CALL_LIMIT}&appid=${import.meta.env.VITE_APP_API_KEY}`
         const response = await fetch(query)
@@ -43,6 +37,8 @@ const useForecast = () => {
 
     const onInputChange = (e: ChangeEvent<HTMLInputElement>) : void => {
       const value = e.target.value.trim()
+      if (!value)
+        setOptions([])
       setSearchInput(value)
       getSearchLocations(value)
     }
@@ -51,7 +47,7 @@ const useForecast = () => {
       setLocation(option)
     }
 
-    const getForecast = async () => {
+    const getForecast = async () => {   
       if (!location) return
 
       const {lat, lon} = location
@@ -78,6 +74,7 @@ const useForecast = () => {
     return {
         searchInput,
         location,
+        setLocation,
         options,
         forecast,
         onInputChange,

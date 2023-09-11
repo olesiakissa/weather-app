@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react'
 import { AppContext } from '../hooks/useAppContext'
 import useForecast from '../hooks/useForecast'
 
-const ContextProvider: React.FC<PropsWithChildren<unknown>> = ( {children} ) : JSX.Element => {
+const AppContextProvider: React.FC<PropsWithChildren<unknown>> = ( {children} ) : JSX.Element => {
   const functionality = useForecast()
 
   return (
@@ -12,4 +12,4 @@ const ContextProvider: React.FC<PropsWithChildren<unknown>> = ( {children} ) : J
   )
 }
 
-export default ContextProvider
+export default AppContextProvider

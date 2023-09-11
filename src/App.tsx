@@ -1,13 +1,13 @@
 
-import ContextProvider from './contexts/ContextProvider'
+import AppContextProvider from './contexts/AppContextProvider'
 import Forecast from './components/forecast/Forecast'
 
 const App = (): JSX.Element => {
   return (
     <main>
-      <ContextProvider>
+      <AppContextProvider>
         <Forecast />
-      </ContextProvider>
+      </AppContextProvider>
     </main>
   )
 }
