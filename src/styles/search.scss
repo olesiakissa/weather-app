@@ -1,0 +1,26 @@
+@use './variables.scss' as v;
+
+#btn-local-weather {
+  margin-block: 1rem;
+  padding-block: 1rem;
+  border-radius: 15px;
+  background-color: v.$dark-blue;
+
+  &:disabled {
+      background:#1c1b3385;
+      opacity: 0.5;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#text-warning {
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  text-align: center;
+  background:#1c1b3385;
+}

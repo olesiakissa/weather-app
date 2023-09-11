@@ -90,7 +90,3 @@
        color: v.$white;
     } 
 }
-
-@mixin dark-blur {
-    backdrop-filter: blur(1px) brightness(50%);
-}

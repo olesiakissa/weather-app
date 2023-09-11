@@ -1,17 +1,27 @@
 @use './variables' as v;
 @use './mixins' as m;
 
-
-#forecast {
-    padding-block-start: 6rem;
-    @include m.dark-blur;
-}
-
 // hero section
 #hero {
+    padding-block-start: 6rem;
     align-items: center;
     text-align: center;
     color: v.$text-color;
+
+    // Move backdrop-filter to a pseudo-element 
+    // to prevent it from affecting sibling components
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(1px) brightness(50%);
+        -webkit-backdrop-filter: blur(1px) brightness(50%);
+        background-color: transparent;
+        z-index: -1;
+    }
 
     #degree {
         font-size: 6rem;
@@ -129,6 +139,7 @@
     color: v.$grey;
     font-weight: 500;
     font-size: 0.9rem;
+    margin-block-end: 0.25rem;
 
     &:before {
         display: inline-block;
