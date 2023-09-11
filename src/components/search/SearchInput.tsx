@@ -9,7 +9,7 @@ const SearchInput = (): JSX.Element => {
        <input type='search' 
               value={searchInput}
               placeholder='Search for a location'
-              onChange={(e) => onInputChange(e)}/> 
+              onChange={(e) => onInputChange(e)} /> 
       {searchInput?.length > 0 && <SearchOptions />}
     </>
   )

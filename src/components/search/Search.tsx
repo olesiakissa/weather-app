@@ -1,6 +1,7 @@
 import SearchInput from './SearchInput'
 import SearchButton from './buttons/SearchButton'
-// import LocalWeatherButton from './buttons/LocalWeatherButton'
+import LocalWeatherButton from './buttons/LocalWeatherButton'
+import LocationPermissionContextProvider from '../../contexts/LocationPermissionContextProvider'
 
 const Search = (): JSX.Element => {
 	return (
@@ -10,8 +11,9 @@ const Search = (): JSX.Element => {
 			<SearchButton />
 		</section>
 
-		{/* todo: display LocalWeatherButton on using geo permissions */}
-		{/* <LocalWeatherButton /> */}
+		<LocationPermissionContextProvider>
+			<LocalWeatherButton />
+		</LocationPermissionContextProvider>
 	</header>
 	)
 }
