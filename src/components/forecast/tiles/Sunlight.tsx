@@ -1,19 +1,26 @@
-import { useAppContext } from '../../../hooks/useAppContext'
-import TileHeader from './TileHeader'
-import { getTime } from '../../../utils'
+import { useAppContext } from '../../../hooks/useAppContext';
+import TileHeader from './TileHeader';
+import { getTime } from '../../../utils';
+import { ForecastType } from '../../../types';
 
-const Sunlight = (): JSX.Element => {
-  const { forecast } = useAppContext()
-  
+const Sunlight = (): JSX.Element | undefined => {
+  const { forecast } = useAppContext() as {
+    forecast: ForecastType | undefined;
+  };
+
+  const timeSunrise = getTime(forecast && forecast.sunrise + forecast.timezone);
+  const timeSunset = getTime(forecast && forecast.sunset + forecast.timezone);
+ 
   return (
     <article className='tile flex col' id='tile-sunlight'>
-        <TileHeader 
-          tileId='sunlight' 
-          heading='SUNRISE' 
-          text={getTime(forecast.sunrise + forecast.timezone)} />
-        <p>Sunset: {getTime(forecast.sunset + forecast.timezone)}PM</p>
+      <TileHeader
+        tileId='sunlight'
+        heading='SUNRISE'
+        text={timeSunrise ? timeSunrise : null}
+      />
+      <p>Sunset: {timeSunset ? timeSunset : ''}PM</p>
     </article>
-  )
-}
+  );
+};
 
-export default Sunlight
+export default Sunlight;

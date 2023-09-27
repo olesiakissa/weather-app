@@ -1,15 +1,13 @@
-interface Props {
+export interface Props {
   temp: number
-  spanId?: string | undefined
+  id?: string | undefined
 }
 
-const Degree = ({temp, spanId} : Props): JSX.Element => (
-    <>
-      <span id={spanId}>
-        {temp}
-        <sup>o</sup>
-      </span>
-    </>
+const Degree = ({temp, id} : Props): JSX.Element => (
+    <p id={id}>
+      {temp}
+      <sup>o</sup>
+    </p>
   )
   
 export default Degree

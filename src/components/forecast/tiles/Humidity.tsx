@@ -1,20 +1,25 @@
-import { useAppContext } from '../../../hooks/useAppContext'
-import TileHeader from './TileHeader'
-import { getHumidityDescription } from '../../../utils'
+import { useAppContext } from '../../../hooks/useAppContext';
+import TileHeader from './TileHeader';
+import { getHumidityDescription } from '../../../utils';
+import { ForecastType } from '../../../types';
 
 const Humidity = (): JSX.Element => {
-	const { forecast } = useAppContext()
-  const [ today ] = forecast.list
+  const { forecast } = useAppContext() as {
+    forecast: ForecastType | undefined;
+  };
 
-	return (
-		<article className='tile flex col' id='tile-humidity'>
-				<TileHeader 
-						tileId='humidity' 
-						heading='HUMIDITY' />
-				<p className='tile-large-text'>{today.main.humidity}%</p>    
-				<p>{getHumidityDescription(today.main.humidity)}</p>
-		</article>
-	)
-}
+  let today;
+  if (forecast) [today] = forecast.list;
 
-export default Humidity
+  const humidity = getHumidityDescription(today && today.main.humidity);
+	
+  return (
+    <article className='tile flex col' id='tile-humidity'>
+      <TileHeader tileId='humidity' heading='HUMIDITY' />
+      <p className='tile-large-text'>{today!.main.humidity}%</p>
+      <p>{humidity ? humidity : null}</p>
+    </article>
+  );
+};
+
+export default Humidity;

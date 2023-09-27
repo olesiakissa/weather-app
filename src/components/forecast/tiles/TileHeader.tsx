@@ -1,7 +1,7 @@
 type Props = {
     tileId: string
     heading: string | JSX.Element // in case of Degree component
-    text?: string
+    text?: string | null
 }
 
 const TileHeader = ({tileId, heading, text}: Props) => {
