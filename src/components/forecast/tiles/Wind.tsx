@@ -1,20 +1,26 @@
-import { useAppContext } from '../../../hooks/useAppContext'
-import TileHeader from './TileHeader'
-import { getWindSpeedInKm, getWindDirection } from '../../../utils'
+import { useAppContext } from '../../../hooks/useAppContext';
+import TileHeader from './TileHeader';
+import { getWindSpeedInKm, getWindDirection } from '../../../utils';
+import { ForecastType } from '../../../types';
 
 const Wind = (): JSX.Element => {
-	const { forecast } = useAppContext()
-	const [ today ] = forecast.list
-	
-	return (
-		<article className='tile flex col' id='tile-wind'>
-			<TileHeader 
-					tileId='wind' 
-					heading='WIND' />
-			<p className='tile-large-text'>{getWindSpeedInKm(today.wind.speed)} km/h</p> 
-			<p>Direction: {getWindDirection(today.wind.speed)}</p>   
-		</article>
-	)
-}
+  const { forecast } = useAppContext() as {
+    forecast: ForecastType | undefined;
+  };
 
-export default Wind
+  let today;
+  if (forecast) [today] = forecast.list;
+
+  const windSpeed = getWindSpeedInKm(today && today.wind.speed);
+  const windDirection = getWindDirection(today && today.wind.speed);
+
+  return (
+    <article className='tile flex col' id='tile-wind'>
+      <TileHeader tileId='wind' heading='WIND' />
+      <p className='tile-large-text'>{windSpeed ? windSpeed : null} km/h</p>
+      <p>Direction: {windDirection ? windDirection : null}</p>
+    </article>
+  );
+};
+
+export default Wind;
