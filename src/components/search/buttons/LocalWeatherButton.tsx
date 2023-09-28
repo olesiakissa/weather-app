@@ -1,52 +1,104 @@
-import { useState, useEffect } from 'react'
-import { useAppContext } from '../../../hooks/useAppContext'
-import { usePermissionContext } from '../../../hooks/usePermissionContext'
-import { Tooltip } from 'react-tooltip'
-import { WARNING_MSG } from '../../../constants'
+import { useState, useEffect } from 'react';
+import { useAppContext } from '../../../hooks/useAppContext';
+import { Tooltip } from 'react-tooltip';
+import {
+  WARNING_MSG,
+  LOCATION_PERMISSION_GRANTED,
+  LOCATION_PERMISSION_PROMPT,
+  LOCATION_PERMISSION_DENIED,
+} from '../../../constants';
+import { OptionType } from '../../../types';
+
+type UserLocation = {
+  lat: number;
+  lon: number;
+};
 
 const LocalWeatherButton = (): JSX.Element => {
-  const { getForecast, location, options } = useAppContext()
-  const { locationPermissionGiven } = usePermissionContext()
+  const { getForecast, location, setLocation, options } = useAppContext() as {
+    getForecast: () => void;
+    location: OptionType | null;
+    setLocation: (value: OptionType | null) => void;
+    options: [] | undefined;
+  };
 
-  const [screenSize, setScreenSize] = useState<number>(screen.width)
+  const [screenSize, setScreenSize] = useState<number>(screen.width);
+  const [locationPermission, setLocationPermission] = useState<string>(
+    LOCATION_PERMISSION_PROMPT
+  );
+
+  const retrieveUserLocation = (): void => {
+    let ul: UserLocation | undefined = undefined;
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position: GeolocationPosition) => {
+          setLocationPermission(LOCATION_PERMISSION_GRANTED);
+          ul = {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          };
+          if (ul) setLocation(ul);
+        },
+        () => {
+          setLocationPermission(LOCATION_PERMISSION_DENIED);
+        }
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (location) {
+      getForecast();
+    }
+  }, [location, getForecast]);
 
   useEffect(() => {
     function handleResize() {
-      setScreenSize(screen.width)
+      setScreenSize(screen.width);
     }
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize);
 
-    return () => window.removeEventListener('resize', handleResize)
-  }, [screenSize])
+    return () => window.removeEventListener('resize', handleResize);
+  }, [screenSize]);
 
-  const displayTextWarning = screenSize <= 768 && !locationPermissionGiven
-    return (
-      <>
-      <button id='btn-local-weather'
-              className={ options.length > 0 ? 'hidden' : ''}
-              type='button'
-              disabled={ !locationPermissionGiven }
-              onClick={ () => {
-                if (locationPermissionGiven && location)
-                  getForecast()
-              } }
-              data-tooltip-id='tt-location'
-              data-tooltip-content={WARNING_MSG}
-              data-tooltip-place='top'
-              data-tooltip-delay-show={250}
-              >
-              Local weather
+  const displayTextWarningMobile =
+    screenSize <= 768 && locationPermission === LOCATION_PERMISSION_DENIED;
+
+  const handleClick = () => {
+    try {
+      retrieveUserLocation();
+      if (location) getForecast();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <>
+      <button
+        id='btn-local-weather'
+        className={options && (options?.length > 0 ? 'hidden' : '')}
+        type='button'
+        disabled={locationPermission === LOCATION_PERMISSION_DENIED}
+        onClick={handleClick}
+        data-tooltip-id='tt-location'
+        data-tooltip-content={WARNING_MSG}
+        data-tooltip-place='top'
+      >
+        Local weather
       </button>
 
       {/* Notify user with tooltip or regular text (based on the device size)
       to give permission to location */}
-      { !locationPermissionGiven && !displayTextWarning && <Tooltip id='tt-location' style={{maxWidth: 325}}/> }
+      {locationPermission === LOCATION_PERMISSION_DENIED &&
+        !displayTextWarningMobile && (
+          <Tooltip id='tt-location' style={{ maxWidth: 325 }} />
+        )}
 
-      { displayTextWarning && <p id='text-warning'>{WARNING_MSG}</p> }
-      </>
-    )
-  
-}
+      {displayTextWarningMobile && <p id='text-warning'>{WARNING_MSG}</p>}
+    </>
+  );
+};
 
-export default LocalWeatherButton
+export default LocalWeatherButton;
