@@ -51,14 +51,14 @@ export type ForecastItemType = {
       temp_min: number
       temp_max: number
       pressure: number
-      sea_level: number
-      grnd_level: number
+      sea_level?: number
+      grnd_level?: number
       humidity: number
-      temp_kf:  number
+      temp_kf?:  number
     }
   weather: [
       {
-          id: number
+          id?: number
           main: string
           description: string
           icon: string
@@ -74,8 +74,8 @@ export type ForecastItemType = {
   }
   visibility: number
   pop: number
-  sys: {
-      pod: string | null
+  sys?: {
+      pod?: string | null
   }
-  dt_txt: string
+  dt_txt?: string
 }
