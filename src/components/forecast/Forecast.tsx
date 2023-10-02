@@ -11,7 +11,7 @@ const Forecast = (): JSX.Element => {
   }
 
   return (
-    <article>
+    <main>
       {forecast 
         ?     
         <section id='forecast'>
@@ -22,7 +22,7 @@ const Forecast = (): JSX.Element => {
         : 
         <Search />  
       } 
-    </article>
+    </main>
   )
 }
 
