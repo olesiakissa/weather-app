@@ -1,7 +1,7 @@
 @use './variables.scss' as v;
 
 #link-local-weather {
-  margin-block:  1rem;
+  margin-block: 1rem;
   padding-block: 1rem;
   border-radius: 15px;
   background-color: v.$dark-blue;
@@ -12,12 +12,12 @@
   button {
     flex: 1;
     background: none;
-  }
 
-  &:disabled {
+    &:disabled {
       cursor: not-allowed !important;
-      background:#1c1b3385 !important;
+      background: #1c1b3385 !important;
       opacity: 0.5 !important;
+    }
   }
 }
 
@@ -27,5 +27,5 @@
   font-size: 1.05rem;
   line-height: 1.5;
   text-align: center;
-  background:#1c1b3385;
+  background: #1c1b3385;
 }
