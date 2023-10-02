@@ -1,15 +1,19 @@
-
-import AppContextProvider from './contexts/AppContextProvider'
-import Forecast from './components/forecast/Forecast'
+import AppContextProvider from './contexts/AppContextProvider';
+import Forecast from './components/forecast/Forecast';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Search from './components/search/Search';
 
 const App = (): JSX.Element => {
   return (
-    <main>
+    <BrowserRouter>
       <AppContextProvider>
-        <Forecast />
+        <Routes>
+          <Route path='/' element={<Search />} />
+          <Route path='/forecast' element={<Forecast />} />
+        </Routes>
       </AppContextProvider>
-    </main>
-  )
-}
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;

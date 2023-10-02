@@ -8,6 +8,7 @@ import {
   LOCATION_PERMISSION_DENIED,
 } from '../../../constants';
 import { OptionType } from '../../../types';
+import { Link } from 'react-router-dom';
 
 type UserLocation = {
   lat: number;
@@ -76,18 +77,24 @@ const LocalWeatherButton = (): JSX.Element => {
 
   return (
     <>
-      <button
-        id='btn-local-weather'
-        className={options && (options?.length > 0 ? 'hidden' : '')}
-        type='button'
-        disabled={locationPermission === LOCATION_PERMISSION_DENIED}
-        onClick={handleClick}
-        data-tooltip-id='tt-location'
-        data-tooltip-content={WARNING_MSG}
-        data-tooltip-place='top'
+      <Link
+        to={
+          locationPermission === LOCATION_PERMISSION_GRANTED ? '/forecast' : ''
+        }
+        id='link-local-weather'
+        className={`flex ${options && (options?.length > 0 ? 'hidden' : '')}`}
       >
-        Local weather
-      </button>
+        <button
+          type='button'
+          disabled={locationPermission === LOCATION_PERMISSION_DENIED}
+          onClick={handleClick}
+          data-tooltip-id='tt-location'
+          data-tooltip-content={WARNING_MSG}
+          data-tooltip-place='top'
+        >
+          Local weather
+        </button>
+      </Link>
 
       {/* Notify user with tooltip or regular text (based on the device size)
       to give permission to location */}
