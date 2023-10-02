@@ -1,19 +1,24 @@
 @use './variables.scss' as v;
 
-#btn-local-weather {
-  margin-block: 1rem;
+#link-local-weather {
+  margin-block:  1rem;
   padding-block: 1rem;
   border-radius: 15px;
   background-color: v.$dark-blue;
+  color: inherit;
+  font-family: inherit;
+  text-decoration: none;
+
+  button {
+    flex: 1;
+    background: none;
+  }
 
   &:disabled {
-      background:#1c1b3385;
-      opacity: 0.5;
+      cursor: not-allowed !important;
+      background:#1c1b3385 !important;
+      opacity: 0.5 !important;
   }
-}
-
-.hidden {
-  display: none;
 }
 
 #text-warning {

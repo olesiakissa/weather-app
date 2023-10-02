@@ -3,209 +3,219 @@
 
 // hero section
 #hero {
-    padding-block-start: 6rem;
-    align-items: center;
-    text-align: center;
-    color: v.$text-color;
+  padding-block-start: 6rem;
+  align-items: center;
+  text-align: center;
+  color: v.$text-color;
 
-    // Move backdrop-filter to a pseudo-element 
-    // to prevent it from affecting sibling components
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        backdrop-filter: blur(1px) brightness(50%);
-        -webkit-backdrop-filter: blur(1px) brightness(50%);
-        background-color: transparent;
-        z-index: -1;
+  // Move backdrop-filter to a pseudo-element
+  // to prevent it from affecting sibling components
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1px) brightness(50%);
+    -webkit-backdrop-filter: blur(1px) brightness(50%);
+    background-color: transparent;
+    z-index: -1;
+  }
+
+  #degree {
+    font-size: 6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 4.375rem;
+    letter-spacing: 0.02338rem;
+    margin-block: 0.75rem;
+    position: relative;
+
+    sup {
+      font-size: 3rem;
+      position: absolute;
+      top: -30px;
     }
+  }
 
-    #degree {
-        font-size: 6rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 4.375rem; 
-        letter-spacing: 0.02338rem;
-        margin-block: 0.75rem;
-        position: relative;
+  p {
+    font-weight: 600;
+    line-height: 1.5rem;
+    letter-spacing: 0.02375rem;
 
-        sup { 
-            font-size: 3rem;
-            position: absolute;
-            top: -30px;
-        }
+    &#high,
+    &#low {
+      display: inline-block;
     }
+  }
 
-    p {
-        font-weight: 600;
-        line-height: 1.5rem;
-        letter-spacing: 0.02375rem;
-    }
+  #description {
+    text-transform: uppercase;
+    margin-block-start: 0.5rem;
+    font-weight: 400;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
 
-    #description {
-        text-transform: uppercase;
-        margin-block-start: 0.5rem;
-        font-weight: 400;
-        font-size: 0.9rem;
-        opacity: 0.8;
-    }
-
-    img {
-        width: 90%;
-        margin-block-start: -15%;
-        z-index: -1;
-        filter: brightness(70%);
-        opacity: 0.5;
-    }
+  img {
+    width: 90%;
+    margin-block-start: -15%;
+    z-index: -1;
+    filter: brightness(70%);
+    opacity: 0.5;
+  }
 }
 
 #hero-heading {
-    font-size: 2.125rem;
-    font-weight: 400;
-    line-height: 2.5625rem; /* 120.588% */
-    letter-spacing: 0.02338rem;
+  font-size: 2.125rem;
+  font-weight: 400;
+  line-height: 2.5625rem; /* 120.588% */
+  letter-spacing: 0.02338rem;
 }
 
 #carrousel {
-    padding-block-end: 0.625rem;
-    margin-block-start: -140px;
-    overflow-x: scroll;
-    cursor: pointer;
-    background-color: v.$dark-bg;
-    color: v.$white;
-    border-radius: 30px 30px 0 0;
-    border-top: 1px solid #814bff8c;
-    box-shadow: 0px -12px 60px 1px rgba(202, 176, 255, 0.4);
+  padding-block-end: 0.625rem;
+  margin-block-start: -140px;
+  overflow-x: scroll;
+  cursor: pointer;
+  background-color: v.$dark-bg;
+  color: v.$white;
+  border-radius: 30px 30px 0 0;
+  border-top: 1px solid #814bff8c;
+  box-shadow: 0px -12px 60px 1px rgba(202, 176, 255, 0.4);
 
-    // Hour in figma
-    .item {
-        flex-shrink: 0;
-        align-items: center;
-        width: 50px;
-        margin-inline: 1rem;
-        margin-block-start: 0.625rem;
-        padding-block: 1rem 0.5rem;
-        border-radius: 30px;
-        background-color: #211B37;
-        box-shadow: 0px 2px 3px 0px rgb(58 74 185 / 55%) inset;
+  // Hour in figma
+  .item {
+    flex-shrink: 0;
+    align-items: center;
+    width: 50px;
+    margin-inline: 1rem;
+    margin-block-start: 0.625rem;
+    padding-block: 1rem 0.5rem;
+    border-radius: 30px;
+    background-color: #211b37;
+    box-shadow: 0px 2px 3px 0px rgb(58 74 185 / 55%) inset;
 
-        &#current {
-            @include m.temp-gradient;
-        }
-
-        p { font-weight: 600; }
-
-        span { font-weight: 400; }
+    &#current {
+      @include m.temp-gradient;
     }
+
+    p {
+      font-weight: 600;
+    }
+
+    span {
+      font-weight: 400;
+    }
+  }
 }
 
 #tiles {
-    padding: 20px;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, 150px);
-    grid-auto-rows: v.$row-height-mob;
-    grid-template-areas: 
-    "sunlight pressure"
-    "humidity visibility"
-    "wind feels_like";
-    grid-row-gap: v.$grid-row-gap;
-    grid-column-gap: v.$grid-col-gap;
-    @include m.tiles-gradient;
+  padding: 20px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 150px);
+  grid-auto-rows: v.$row-height-mob;
+  grid-template-areas:
+    'sunlight pressure'
+    'humidity visibility'
+    'wind feels_like';
+  grid-row-gap: v.$grid-row-gap;
+  grid-column-gap: v.$grid-col-gap;
+  @include m.tiles-gradient;
 }
 
 .tile {
-    background-color: v.$tile-bg;
-    border: 1px solid v.$tile-border;
-    border-radius: 25px;
-    padding: 1.25rem;
-    color: v.$text-color;
-    height: 100%;
+  background-color: v.$tile-bg;
+  border: 1px solid v.$tile-border;
+  border-radius: 25px;
+  padding: 1.25rem;
+  color: v.$text-color;
+  height: 100%;
 
-    p {
-        font-size: 0.8rem;
-    }
+  p {
+    font-size: 0.8rem;
+  }
 
-    .tile-large-text {
-        font-size: 1.6rem;
-        margin-bottom: auto;
-    }
+  .tile-large-text {
+    font-size: 1.6rem;
+    margin-bottom: auto;
+  }
 }
 
 .tile-header {
-    text-transform: uppercase;
-    color: v.$grey;
-    font-weight: 500;
-    font-size: 0.9rem;
-    margin-block-end: 0.25rem;
+  text-transform: uppercase;
+  color: v.$grey;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-block-end: 0.25rem;
 
-    &:before {
-        display: inline-block;
-        margin-inline-end: 12px;
-        content: '';
-        width: v.$icon-w;
-        height: v.$icon-h;
-        vertical-align: sub;
-    }
+  &:before {
+    display: inline-block;
+    margin-inline-end: 12px;
+    content: '';
+    width: v.$icon-w;
+    height: v.$icon-h;
+    vertical-align: sub;
+  }
 
-    &#sunlight-header {
-        background: url('../../src/assets/icons/sunrise.svg') no-repeat;
-    }
+  &#sunlight-header {
+    background: url('../../src/assets/icons/sunrise.svg') no-repeat;
+  }
 
-    &#humidity-header {
-        background: url('../../src/assets/icons/humidity.svg') no-repeat;
-    }
+  &#humidity-header {
+    background: url('../../src/assets/icons/humidity.svg') no-repeat;
+  }
 
-    &#pressure-header {
-        background: url('../../src/assets/icons/pressure.svg') no-repeat;
-    }
+  &#pressure-header {
+    background: url('../../src/assets/icons/pressure.svg') no-repeat;
+  }
 
-    &#visibility-header {
-        background: url('../../src/assets/icons/visibility.svg') no-repeat;
-    }
+  &#visibility-header {
+    background: url('../../src/assets/icons/visibility.svg') no-repeat;
+  }
 
-    &#wind-header {
-        background: url('../../src/assets/icons/wind.svg') no-repeat;
-        background-size: contain;
-    }
+  &#wind-header {
+    background: url('../../src/assets/icons/wind.svg') no-repeat;
+    background-size: contain;
+  }
 
-    &#feels-like-header {
-        background: url('../../src/assets/icons/temp.svg') no-repeat;
-        background-size: contain;
-    }
+  &#feels-like-header {
+    background: url('../../src/assets/icons/temp.svg') no-repeat;
+    background-size: contain;
+  }
 }
 
 #tile-sunlight {
-    grid-area: sunlight;
-    background-image: url('../../src/assets/sun_bg_line.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 110%;
-    background-blend-mode: overlay;
+  grid-area: sunlight;
+  background-image: url('../../src/assets/sun_bg_line.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 110%;
+  background-blend-mode: overlay;
 }
 
 #tile-pressure {
-    grid-area: pressure;
+  grid-area: pressure;
 }
 
 #tile-humidity {
-    grid-area: humidity;
+  grid-area: humidity;
 }
 
 #tile-visibility {
-    grid-area: visibility;
+  grid-area: visibility;
 }
 
 #tile-wind {
-    grid-area: wind;
+  grid-area: wind;
 }
 
-#tile-feels-like {
-    grid-area: feels_like;
+#tile-feels {
+  grid-area: feels_like;
+  justify-content: space-between;
 }
 
 #feels-like {
-    font-size: 4rem;
+  font-size: 4rem;
 }
