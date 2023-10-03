@@ -1,5 +1,57 @@
 @use './variables.scss' as v;
 
+#location-search {
+  position: relative;
+  margin: 1.25rem;
+  color: v.$white;
+
+  input {
+    border-radius: 15px 0 0 15px;
+    background-color: #1c1b333b;
+    cursor: text;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25) inset;
+    height: v.$input-height;
+    padding-inline-start: 0.75rem;
+    flex: 1;
+  }
+}
+
+#search-btn {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0 15px 15px 0;
+  color: v.$white;
+  background-color: v.$dark-blue;
+}
+
+#locations {
+  position: absolute;
+  top: calc(v.$input-height + 5%);
+  width: 100%;
+  color: v.$white;
+
+  * {
+    width: 100%;
+  }
+}
+
+.location-option {
+  background: none;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid v.$white;
+  text-align: left;
+
+  &:hover {
+    background: linear-gradient(
+      136deg,
+      rgba(46, 51, 90, 0.28) 0%,
+      rgba(28, 27, 51, 0.3) 100%
+    );
+  }
+}
+ 
+
 #link-local-weather {
   margin-block: 1rem;
   padding-block: 1rem;
@@ -12,12 +64,19 @@
   button {
     flex: 1;
     background: none;
+    position: relative;
 
     &:disabled {
       cursor: not-allowed !important;
       background: #1c1b3385 !important;
       opacity: 0.5 !important;
     }
+  }
+
+  #location-icon {
+    position: absolute;
+    top: 5%;
+    right: 30%;
   }
 }
 

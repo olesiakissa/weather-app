@@ -6,6 +6,10 @@
 
     ::-webkit-scrollbar {
       width: 10px;
+
+      @media (orientation: landscape) {
+        display: none;
+      }
     }
 
     ::-webkit-scrollbar-track {
@@ -25,12 +29,12 @@
   background-repeat: no-repeat;
   background-position: 50% 35%;
 
-  @media screen and (min-width: v.$breakpoint-tablet) {
+  @media screen and (min-width: v.$tablet-breakpoint) {
     background: url('./assets/bg_scale_1161.png');
     background-size: cover;
   }
 
-  @media screen and (min-width: v.$breakpoint-desktop) {
+  @media screen and (min-width: v.$desktop-breakpoint) {
     background: url('./assets/bg_scale_1287.png');
     background-size: cover;
     background-position: center center;
