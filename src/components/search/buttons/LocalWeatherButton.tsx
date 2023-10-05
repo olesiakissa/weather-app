@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAppContext } from '../../../hooks/useAppContext';
 import { Tooltip } from 'react-tooltip';
 import {
@@ -9,11 +9,8 @@ import {
 } from '../../../constants';
 import { OptionType } from '../../../types';
 import { Link } from 'react-router-dom';
-
-type UserLocation = {
-  lat: number;
-  lon: number;
-};
+import { BiCurrentLocation } from 'react-icons/bi';
+import { TbCurrentLocationOff } from 'react-icons/tb';
 
 const LocalWeatherButton = (): JSX.Element => {
   const { getForecast, location, setLocation, options } = useAppContext() as {
@@ -28,28 +25,35 @@ const LocalWeatherButton = (): JSX.Element => {
     LOCATION_PERMISSION_PROMPT
   );
 
-  const retrieveUserLocation = (): void => {
-    let ul: UserLocation | undefined = undefined;
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition) => {
-          setLocationPermission(LOCATION_PERMISSION_GRANTED);
-          ul = {
-            lat: position.coords.latitude,
-            lon: position.coords.longitude,
-          };
-          if (ul) setLocation(ul);
-        },
-        () => {
-          setLocationPermission(LOCATION_PERMISSION_DENIED);
-        }
-      );
-    }
+  const shouldTriggerEffect = useRef<boolean>(false);
+
+  const retrieveUserLocation = async (): Promise<OptionType | undefined> => {
+    return new Promise<OptionType | undefined>((resolve) => {
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position: GeolocationPosition) => {
+            setLocationPermission(LOCATION_PERMISSION_GRANTED);
+            const ul: OptionType = {
+              lat: position.coords.latitude,
+              lon: position.coords.longitude,
+            };
+            resolve(ul);
+          },
+          () => {
+            setLocationPermission(LOCATION_PERMISSION_DENIED);
+            resolve(undefined);
+          }
+        );
+      } else {
+        resolve(undefined);
+      }
+    });
   };
 
   useEffect(() => {
-    if (location) {
+    if (shouldTriggerEffect.current) {
       getForecast();
+      shouldTriggerEffect.current = false;
     }
   }, [location, getForecast]);
 
@@ -66,10 +70,17 @@ const LocalWeatherButton = (): JSX.Element => {
   const displayTextWarningMobile =
     screenSize <= 768 && locationPermission === LOCATION_PERMISSION_DENIED;
 
-  const handleClick = () => {
+  const handleClick = async () => {
     try {
-      retrieveUserLocation();
-      if (location) getForecast();
+      const currentLocation = await retrieveUserLocation();
+      if (
+        currentLocation &&
+        currentLocation.lat !== location?.lat &&
+        currentLocation.lon !== location?.lon
+      ) {
+        shouldTriggerEffect.current = true;
+        setLocation(currentLocation);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -82,7 +93,7 @@ const LocalWeatherButton = (): JSX.Element => {
           locationPermission === LOCATION_PERMISSION_GRANTED ? '/forecast' : ''
         }
         id='link-local-weather'
-        className={`flex ${options && (options?.length > 0 ? 'hidden' : '')}`}
+        className={`flex ${options && (options.length > 0 ? 'hidden' : '')}`}
       >
         <button
           type='button'
@@ -92,7 +103,12 @@ const LocalWeatherButton = (): JSX.Element => {
           data-tooltip-content={WARNING_MSG}
           data-tooltip-place='top'
         >
-          Local weather
+          Local forecast{' '}
+          {locationPermission === LOCATION_PERMISSION_DENIED ? (
+            <TbCurrentLocationOff id='location-icon' />
+          ) : (
+            <BiCurrentLocation id='location-icon' />
+          )}
         </button>
       </Link>
 
