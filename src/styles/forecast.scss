@@ -100,6 +100,10 @@
 
   // Mobile: landscape
   @media (orientation: landscape) {
+    #hero-heading {
+      font-size: 1.75rem;
+    }
+
     img {
       width: 50%;
       margin-block-start: -10%;
@@ -109,6 +113,7 @@
 }
 
 #hero-heading {
+  max-width: 80%;
   font-size: 2.125rem;
   font-weight: 400;
   line-height: 2.5625rem; /* 120.588% */

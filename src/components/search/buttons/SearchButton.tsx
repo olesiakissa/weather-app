@@ -2,16 +2,21 @@ import { useAppContext } from '../../../hooks/useAppContext';
 import { Link } from 'react-router-dom';
 
 const SearchButton = (): JSX.Element => {
-  const { getForecast } = useAppContext() as { getForecast: () => void };
+  const { getForecast, setSearchInput } = useAppContext() as {
+    getForecast: () => void;
+    setSearchInput: (value: string | undefined) => void;
+  };
+
+  const handleClick = () => {
+    setSearchInput('');
+    setTimeout(() => {
+      getForecast();
+    }, 0);
+  };
 
   return (
     <Link to={'/forecast'}>
-      <button
-        id='search-btn'
-        name='search'
-        type='button'
-        onClick={() => getForecast()}
-      >
+      <button id='search-btn' name='search' type='button' onClick={handleClick}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='9'

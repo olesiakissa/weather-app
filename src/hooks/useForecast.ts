@@ -49,7 +49,11 @@ const useForecast = () => {
   };
 
   const onOptionSelect = (option: OptionType): void => {
-    setLocation(option);
+    if (
+      option &&
+      (option.lat !== location?.lat || option.lon !== location?.lon)
+    )
+      setLocation(option);
   };
 
   const getForecast = async () => {
@@ -80,6 +84,7 @@ const useForecast = () => {
 
   return {
     searchInput,
+    setSearchInput,
     location,
     setLocation,
     options,
