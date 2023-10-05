@@ -20,11 +20,10 @@ const LocalWeatherButton = (): JSX.Element => {
     options: [] | undefined;
   };
 
-  const [screenSize, setScreenSize] = useState<number>(screen.width);
   const [locationPermission, setLocationPermission] = useState<string>(
-    LOCATION_PERMISSION_PROMPT
+    localStorage.getItem('locationPermission') || LOCATION_PERMISSION_PROMPT
   );
-
+  const [screenSize, setScreenSize] = useState<number>(screen.width);
   const shouldTriggerEffect = useRef<boolean>(false);
 
   const retrieveUserLocation = async (): Promise<OptionType | undefined> => {
@@ -32,6 +31,7 @@ const LocalWeatherButton = (): JSX.Element => {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
           (position: GeolocationPosition) => {
+            localStorage.setItem('locationPermission', 'granted');
             setLocationPermission(LOCATION_PERMISSION_GRANTED);
             const ul: OptionType = {
               lat: position.coords.latitude,
@@ -40,6 +40,7 @@ const LocalWeatherButton = (): JSX.Element => {
             resolve(ul);
           },
           () => {
+            localStorage.setItem('locationPermission', 'denied');
             setLocationPermission(LOCATION_PERMISSION_DENIED);
             resolve(undefined);
           }
@@ -90,7 +91,7 @@ const LocalWeatherButton = (): JSX.Element => {
     <>
       <Link
         to={
-          locationPermission === LOCATION_PERMISSION_DENIED ? '' : '/forecast'
+          locationPermission === LOCATION_PERMISSION_GRANTED ? '/forecast' : ''
         }
         id='link-local-weather'
         className={`flex ${options && (options.length > 0 ? 'hidden' : '')}`}
