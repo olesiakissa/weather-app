@@ -2,6 +2,7 @@ import { useAppContext } from '../../../hooks/useAppContext';
 import TileHeader from './TileHeader';
 import { getWindSpeedInKm, getWindDirection } from '../../../utils';
 import { ForecastType } from '../../../types';
+import { WiStrongWind } from 'react-icons/wi';
 
 const Wind = (): JSX.Element => {
   const { forecast } = useAppContext() as {
@@ -16,7 +17,7 @@ const Wind = (): JSX.Element => {
 
   return (
     <article className='tile flex col' id='tile-wind'>
-      <TileHeader tileId='wind' heading='WIND' />
+      <TileHeader tileId='wind' heading='WIND' icon={WiStrongWind} />
       <p className='tile-large-text'>{windSpeed ? windSpeed : null} km/h</p>
       <p>Direction: {windDirection ? windDirection : null}</p>
     </article>

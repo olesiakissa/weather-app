@@ -5,6 +5,7 @@ import {
   getVisibilityValueInKm,
 } from '../../../utils';
 import { ForecastType } from '../../../types';
+import { WiFog } from 'react-icons/wi';
 
 const Visibility = (): JSX.Element => {
   const { forecast } = useAppContext() as {
@@ -21,7 +22,11 @@ const Visibility = (): JSX.Element => {
 
   return (
     <article className='tile flex col' id='tile-visibility'>
-      <TileHeader tileId='visibility' heading='VISIBILITY' />
+      <TileHeader
+        tileId='visibility'
+        heading='VISIBILITY'
+        icon={WiFog}
+      />
       <p className='tile-large-text'>{visibilityKm ? visibilityKm : null} km</p>
       <p>{visibilityDescription ? visibilityDescription : null}</p>
     </article>

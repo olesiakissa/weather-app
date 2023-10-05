@@ -232,46 +232,12 @@
 }
 
 .tile-header {
+  align-items: center;
   text-transform: uppercase;
   color: v.$grey;
   font-weight: 500;
   font-size: 0.9rem;
   margin-block-end: 0.25rem;
-
-  &:before {
-    display: inline-block;
-    margin-inline-end: 12px;
-    content: '';
-    width: v.$icon-w;
-    height: v.$icon-h;
-    vertical-align: sub;
-  }
-
-  &#sunlight-header {
-    background: url('../../src/assets/icons/sunrise.svg') no-repeat;
-  }
-
-  &#humidity-header {
-    background: url('../../src/assets/icons/humidity.svg') no-repeat;
-  }
-
-  &#pressure-header {
-    background: url('../../src/assets/icons/pressure.svg') no-repeat;
-  }
-
-  &#visibility-header {
-    background: url('../../src/assets/icons/visibility.svg') no-repeat;
-  }
-
-  &#wind-header {
-    background: url('../../src/assets/icons/wind.svg') no-repeat;
-    background-size: contain;
-  }
-
-  &#feels-like-header {
-    background: url('../../src/assets/icons/temp.svg') no-repeat;
-    background-size: contain;
-  }
 }
 
 #tile-sunlight {
