@@ -51,7 +51,7 @@ const LocalWeatherButton = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (shouldTriggerEffect.current) {
+    if (location && shouldTriggerEffect.current) {
       getForecast();
       shouldTriggerEffect.current = false;
     }
@@ -90,7 +90,7 @@ const LocalWeatherButton = (): JSX.Element => {
     <>
       <Link
         to={
-          locationPermission === LOCATION_PERMISSION_GRANTED ? '/forecast' : ''
+          locationPermission === LOCATION_PERMISSION_DENIED ? '' : '/forecast'
         }
         id='link-local-weather'
         className={`flex ${options && (options.length > 0 ? 'hidden' : '')}`}
