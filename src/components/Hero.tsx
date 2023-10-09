@@ -22,8 +22,8 @@ const Hero = (): JSX.Element => {
       <Degree temp={Math.round(today!.main.temp)} id='degree' />
       <div className='flex col'>
         <p id='description'>{today!.weather[0].description}</p>
-        <div>
-          H: <Degree temp={Math.round(today!.main.temp_max)} id='high' /> L:{' '}
+        <div id='lowhigh-container'>
+          <p>H: </p><Degree temp={Math.round(today!.main.temp_max)} id='high' /><p> L:</p>{' '}
           <Degree temp={Math.round(today!.main.temp_min)} id='low' />
         </div>
       </div>

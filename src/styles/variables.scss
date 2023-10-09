@@ -12,6 +12,7 @@ $blue-accent: rgba(58, 74, 185, 0.5);
 $font-primary: 'Sofia Sans Semi Condensed', 'Roboto', 'Rubik', sans-serif;
 
 // responsiveness
+$tablet-breakpoint-sm: 550px;
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1024px;
 $landscape-breakpoint: 1024px;
@@ -22,19 +23,19 @@ $input-height: 3rem;
 // ==============================FORECAST==============================
 
 // dimensions
-$icon-w: 16px;
-$icon-h: 25px;
+$location-icon-width: 1.875rem;
+$location-icon-height: 1.125rem;
 
 // grid
-$grid-row-gap-mobile: 20px;
-$grid-col-gap-mobile: 20px;
+$grid-row-gap-mobile: 1.875rem;
+$grid-col-gap-mobile: 1.875rem;
 $row-height-mobile: 165px;
-$grid-row-gap-tablet: 30px;
-$grid-col-gap-tablet: 30px;
+$grid-row-gap-tablet: 1.875rem;
+$grid-col-gap-tablet: 3.125rem;
 $row-height-tablet: 165px;
-$grid-row-gap-tablet: 40px;
-$grid-col-gap-tablet: 40px;
-$row-height-tablet: 165px;
+$grid-row-gap-desktop: 1rem;
+$grid-col-gap-desktop: 5rem;
+$row-height-desktop: 165px;
 
 // colors
 $tile-bg: $dark-violet;

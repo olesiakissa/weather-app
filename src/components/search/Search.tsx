@@ -4,14 +4,15 @@ import LocalWeatherButton from './buttons/LocalWeatherButton';
 
 const Search = (): JSX.Element => {
   return (
-    <header id='location-search' className='flex col'>
-      <section className='flex'>
-        <SearchInput />
-        <SearchButton />
-      </section>
-
-      <LocalWeatherButton />
-    </header>
+    <div id='header-container' className='flex'>
+      <header id='location-search' className='flex col'>
+        <section className='flex'>
+          <SearchInput />
+          <SearchButton />
+        </section>
+        <LocalWeatherButton />
+      </header>
+    </div>
   );
 };
 

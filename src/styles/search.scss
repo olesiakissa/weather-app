@@ -1,9 +1,17 @@
 @use './variables.scss' as v;
 
+#header-container {
+  height: 100vh;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 #location-search {
   position: relative;
-  margin: 1.25rem;
+  margin: 2.5rem 1.25rem 2rem;
   color: v.$white;
+  flex: 1;
+  max-width: 350px;
 
   input {
     border-radius: 15px 0 0 15px;
@@ -21,8 +29,9 @@
   width: 3rem;
   height: 3rem;
   border-radius: 0 15px 15px 0;
-  color: v.$white;
-  background-color: v.$dark-blue;
+  background-color: rgba(28, 27, 51, 0.231372549);
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25) inset;
+  border-left: 1px solid #1c1b3347;
 }
 
 #locations {
@@ -50,7 +59,6 @@
     );
   }
 }
- 
 
 #link-local-weather {
   margin-block: 1rem;
@@ -63,8 +71,9 @@
 
   button {
     flex: 1;
+    justify-content: center;
+    text-align: center;
     background: none;
-    position: relative;
 
     &:disabled {
       cursor: not-allowed !important;
@@ -74,9 +83,8 @@
   }
 
   #location-icon {
-    position: absolute;
-    top: 5%;
-    right: 30%;
+    width: v.$location-icon-width;
+    height: v.$location-icon-height;
   }
 }
 
@@ -87,4 +95,37 @@
   line-height: 1.5;
   text-align: center;
   background: #1c1b3385;
+}
+
+// ======= MEDIA QUERIES =======
+
+@media screen and (orientation: landscape) {
+  #header-container {
+    align-items: center;
+  }
+
+  #location-search {
+    margin-block-start: 0;
+  }
+}
+
+@media screen and (min-width: v.$tablet-breakpoint) {
+  #location-search {
+    max-width: 500px;
+    margin-block: 8rem;
+  }
+
+  #link-local-weather {
+    margin-block-start: 1.5rem;
+  }
+}
+
+@media screen and (min-width: v.$landscape-breakpoint) {
+  #search-btn svg {
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
 }

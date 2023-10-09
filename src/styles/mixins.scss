@@ -49,6 +49,10 @@
   );
 }
 
+@mixin shadow-violet {
+  box-shadow: 0px -12px 60px 1px rgba(202, 176, 255, 0.4);
+}
+
 @mixin tiles-gradient {
   background: linear-gradient(296deg, #281947, #150f21);
   background-size: 100% 100%;
