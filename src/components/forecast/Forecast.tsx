@@ -13,20 +13,22 @@ const Forecast = (): JSX.Element => {
   };
 
   return (
-    <main>
+    <>
       {forecast ? (
-        <section id='forecast' className='grid'>
-          <Link to='/' aria-label='Back to Homepage' id='link-homepage' className='flex'>
-            <FaArrowLeft />
-          </Link>
-          <Hero />
-          <Carrousel />
-          <Tiles />
-        </section>
+        <main>
+          <section id='forecast' className='grid'>
+            <Link to='/' aria-label='Back to Homepage' id='link-homepage' className='flex'>
+              <FaArrowLeft />
+            </Link>
+            <Hero />
+            <Carrousel />
+            <Tiles />
+          </section>
+        </main>
       ) : (
         <Search />
       )}
-    </main>
+    </>
   );
 };
 

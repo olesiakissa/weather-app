@@ -98,6 +98,7 @@ const LocalWeatherButton = (): JSX.Element => {
       >
         <button
           type='button'
+          className='flex'
           disabled={locationPermission === LOCATION_PERMISSION_DENIED}
           onClick={handleClick}
           data-tooltip-id='tt-location'
@@ -106,7 +107,7 @@ const LocalWeatherButton = (): JSX.Element => {
         >
           Local forecast{' '}
           {locationPermission === LOCATION_PERMISSION_DENIED ? (
-            <TbCurrentLocationOff id='location-icon' />
+            <TbCurrentLocationOff id='location-icon'/>
           ) : (
             <BiCurrentLocation id='location-icon' />
           )}
