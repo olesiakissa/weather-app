@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&family=Rubik:wght@400;500;700&family=Sofia+Sans+Semi+Condensed:wght@300;400;500;800&display=swap');
-
 // ============================== INDEX ==============================
 
 // colors
@@ -7,9 +5,11 @@ $dark-violet: #2e245c;
 $white: #ffffff;
 $dark-blue: #1c1b33;
 $blue-accent: rgba(58, 74, 185, 0.5);
-
-// text
-$font-primary: 'Sofia Sans Semi Condensed', 'Roboto', 'Rubik', sans-serif;
+$tile-bg: $dark-violet;
+$dark-bg: #150f21;
+$tile-border: #cab0ff;
+$grey: #dfdfdf;
+$text-color: #ffffff;
 
 // responsiveness
 $tablet-breakpoint-sm: 550px;
@@ -34,12 +34,5 @@ $grid-row-gap-tablet: 1.875rem;
 $grid-col-gap-tablet: 3.125rem;
 $row-height-tablet: 165px;
 $grid-row-gap-desktop: 1rem;
-$grid-col-gap-desktop: 5rem;
+$grid-col-gap-desktop: 5%;
 $row-height-desktop: 165px;
-
-// colors
-$tile-bg: $dark-violet;
-$dark-bg: #150f21;
-$tile-border: #cab0ff;
-$grey: #a5a6b3;
-$text-color: #ffffff;

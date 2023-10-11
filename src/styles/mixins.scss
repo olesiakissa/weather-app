@@ -6,10 +6,6 @@
 
     ::-webkit-scrollbar {
       width: 10px;
-
-      @media (orientation: landscape) {
-        display: none;
-      }
     }
 
     ::-webkit-scrollbar-track {
@@ -25,7 +21,7 @@
 }
 
 @mixin body-bg {
-  background: url('./assets/bg_scale_864.png');
+  background: url('./assets/bg_scale_864.jpg');
   background-repeat: no-repeat;
   background-position: 50% 35%;
 
