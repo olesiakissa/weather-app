@@ -109,6 +109,8 @@ const LocalWeatherButton = (): JSX.Element => {
           Local forecast{' '}
           {locationPermission === LOCATION_PERMISSION_DENIED ? (
             <svg
+              role='graphics-symbol'
+              aria-hidden='true'
               id='location-icon'
               width='30px'
               height='18px'
@@ -126,6 +128,8 @@ const LocalWeatherButton = (): JSX.Element => {
             </svg>
           ) : (
             <svg
+            role='graphics-symbol'
+              aria-hidden='true'
               id='location-icon'
               width='30px'
               height='18px'

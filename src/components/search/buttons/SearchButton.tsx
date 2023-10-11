@@ -18,6 +18,8 @@ const SearchButton = (): JSX.Element => {
     <Link to={'/forecast'}>
       <button id='search-btn' name='search' type='button' onClick={handleClick}>
         <svg
+          role='graphics-symbol'
+          aria-hidden='true'
           xmlns='http://www.w3.org/2000/svg'
           width='9'
           height='14'
