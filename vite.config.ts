@@ -24,4 +24,7 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
     },
   },
+  optimizeDeps: {
+    include: ['./dist/assets/**/*.css'],
+  },
 });
