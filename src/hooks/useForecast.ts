@@ -12,6 +12,7 @@ const useForecast = () => {
   const [location, setLocation] = useState<OptionType | null>(null);
   const [options, setOptions] = useState<[] | undefined>([]);
   const [forecast, setForecast] = useState<ForecastType | undefined>(undefined);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (location) {
@@ -56,30 +57,45 @@ const useForecast = () => {
       setLocation(option);
   };
 
-  const getForecast = async () => {
-    if (!location) return;
-
-    const { lat, lon } = location;
-    try {
-      const query = `${API_CALL_LOCATION}lat=${lat}&lon=${lon}&units=${API_UNITS}&appid=${
-        import.meta.env.VITE_APP_API_KEY
-      }`;
-      const response = await fetch(query);
-      if (!response.ok) {
-        throw new Error(
-          `${response.status}: An error occurred while trying to weather for a specified location`
-        );
+  const getForecast = async (
+    locationValue: OptionType | null
+  ): Promise<ForecastType> => {
+    return new Promise((resolve, reject) => {
+      if (!locationValue) {
+        reject(new Error('Location is not available'));
+        return;
       }
-      const data = await response.json();
-      const forecastData = {
-        ...data.city,
-        list: data.list.slice(0, 16),
-      };
-      setForecast(forecastData);
-    } catch (error) {
-      console.error(error);
-      return error;
-    }
+
+      const { lat, lon } = locationValue;
+      try {
+        const query = `${API_CALL_LOCATION}lat=${lat}&lon=${lon}&units=${API_UNITS}&appid=${
+          import.meta.env.VITE_APP_API_KEY
+        }`;
+        fetch(query)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(
+                `${response.status}: An error occurred while trying to fetch weather for a specified location`
+              );
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const forecastData = {
+              ...data.city,
+              list: data.list.slice(0, 16),
+            };
+            setForecast(forecastData);
+            resolve(forecastData);
+          })
+          .catch((error) => {
+            console.error(error);
+            reject(error);
+          });
+      } catch (error) {
+        reject(error);
+      }
+    });
   };
 
   return {
@@ -92,6 +108,8 @@ const useForecast = () => {
     onInputChange,
     onOptionSelect,
     getForecast,
+    loading,
+    setLoading,
   };
 };
 

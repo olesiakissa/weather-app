@@ -20,7 +20,7 @@ const FeelsLike = (): JSX.Element => {
         heading='FEELS LIKE'
         icon={WiThermometer}
       />
-      <Degree temp={Math.round(today!.main.feels_like)} id='feels-like' />
+      <Degree temp={Math.round(Number(today?.main.feels_like))} id='feels-like' />
     </article>
   );
 };

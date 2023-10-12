@@ -12,12 +12,12 @@ const Pressure = (): JSX.Element => {
   let today;
   if (forecast) [today] = forecast.list;
 
-  const pressure = getPressureDescription(today && today.main.pressure);
+  const pressure = getPressureDescription(today && Number(today?.main.pressure));
 
   return (
     <article className='tile flex col' id='tile-pressure'>
       <TileHeader tileId='pressure' heading='PRESSURE' icon={WiBarometer}/>
-      <p className='tile-large-text'>{today!.main.pressure} hPa</p>
+      <p className='tile-large-text'>{today?.main.pressure} hPa</p>
       <p>{pressure ? pressure : null}</p>
     </article>
   );

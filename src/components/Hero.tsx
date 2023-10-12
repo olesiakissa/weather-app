@@ -12,22 +12,27 @@ const Hero = (): JSX.Element => {
   let today;
   if (forecast) [today] = forecast.list;
 
-  const headingText = `${forecast?.name}${
-    location && location.name ? `, ${location.name}` : ''
+  const newHeadingText = `${forecast?.name}${
+    location ? `, ${location.name}` : ''
   }${location && location.state ? `, ${location.state}` : ''}`;
 
   return (
     <section id='hero' className='flex col'>
-      <h1 id='hero-heading'>{headingText}</h1>
-      <Degree temp={Math.round(today!.main.temp)} id='degree' />
+      <h1 id='hero-heading'>{newHeadingText}</h1>
+      <Degree temp={Math.round(Number(today?.main.temp))} id='degree' />
       <div className='flex col'>
-        <p id='description'>{today!.weather[0].description}</p>
+        <p id='description'>{today?.weather[0]?.description}</p>
         <div id='lowhigh-container'>
-          <p>H: </p><Degree temp={Math.round(today!.main.temp_max)} id='high' /><p> L:</p>{' '}
-          <Degree temp={Math.round(today!.main.temp_min)} id='low' />
+          <p>H: </p>
+          <Degree temp={Math.round(Number(today?.main.temp_max))} id='high' />
+          <p> L:</p>{' '}
+          <Degree temp={Math.round(Number(today?.main.temp_min))} id='low' />
         </div>
       </div>
-      <img src={Home} alt='house logo' />
+      <div className='image-container'>
+        <div className='placeholder-image'></div>
+        <img src={Home} alt='house logo' loading='lazy' />
+      </div>
     </section>
   );
 };

@@ -12,12 +12,12 @@ const Humidity = (): JSX.Element => {
   let today;
   if (forecast) [today] = forecast.list;
 
-  const humidity = getHumidityDescription(today && today.main.humidity);
+  const humidity = getHumidityDescription(today && Number(today?.main.humidity));
 
   return (
     <article className='tile flex col' id='tile-humidity'>
       <TileHeader tileId='humidity' heading='HUMIDITY' icon={WiRaindrop} />
-      <p className='tile-large-text'>{today!.main.humidity}%</p>
+      <p className='tile-large-text'>{today?.main.humidity}%</p>
       <p>{humidity ? humidity : null}</p>
     </article>
   );
