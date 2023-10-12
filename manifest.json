@@ -2,7 +2,7 @@
   "name": "Weather App",
   "short_name": "Weather App",
   "description": "Stay informed with this React weather forecast app. Get up-to-date weather information for your location and plan your day with confidence.",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#150f21",
   "background_color": "#150f21",
@@ -28,6 +28,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/splash.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
