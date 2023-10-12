@@ -1,0 +1,33 @@
+{
+  "name": "Weather App",
+  "short_name": "Weather App",
+  "description": "Stay informed with this React weather forecast app. Get up-to-date weather information for your location and plan your day with confidence.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#150f21",
+  "background_color": "#150f21",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/maskable_icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/maskable_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
