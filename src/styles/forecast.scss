@@ -3,6 +3,8 @@
 
 main {
   justify-content: center;
+  height: 100vh;
+
 }
 
 #forecast {
@@ -54,6 +56,29 @@ main {
     }
   }
 
+  .image-container {
+    position: relative;
+    width: 100%; 
+    min-height: 380px;
+    width: 90%;
+    height: auto;
+    margin-block-start: -15%;
+    z-index: -1;
+    filter: brightness(70%);
+    opacity: 0.5;
+
+    .placeholder-image {
+      background-image: url('/src/assets/house_placeholder.png'); 
+      background-size: cover; 
+      width: 100%; 
+      height: 0;
+    }
+
+    img {
+      margin-inline: auto;
+    }
+  } 
+
   #degree {
     font-size: 6rem;
     font-style: normal;
@@ -86,14 +111,6 @@ main {
     font-weight: 400;
     font-size: 0.9rem;
     opacity: 0.8;
-  }
-
-  img {
-    width: 90%;
-    margin-block-start: -15%;
-    z-index: -1;
-    filter: brightness(70%);
-    opacity: 0.5;
   }
 }
 
@@ -298,6 +315,10 @@ main {
 @media screen and (min-width: v.$tablet-breakpoint-sm) {
   #carrousel {
     min-height: 170px;
+   
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     .item {
       margin-inline: 0.9rem;
@@ -309,7 +330,7 @@ main {
   }
 
   #tiles {
-    grid-template-columns: repeat(3, minmax(140px, 190px));
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
     grid-template-areas:
       'sunlight pressure humidity'
       'visibility wind feels_like';
@@ -422,7 +443,7 @@ main {
       opacity: 1;
     }
 
-    img {
+    .image-container {
       display: none;
     }
   }
@@ -435,10 +456,6 @@ main {
     max-width: 530px;
     width: 500px;
     border: 1px solid #cab0ffa8;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 
   #tiles {
