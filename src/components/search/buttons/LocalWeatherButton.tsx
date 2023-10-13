@@ -164,7 +164,14 @@ const LocalWeatherButton = (): JSX.Element => {
           <Tooltip id='tt-location' style={{ maxWidth: 325 }} />
         )}
 
-      {displayTextWarningMobile && <p id='text-warning'>{WARNING_MSG}</p>}
+      {displayTextWarningMobile && (
+        <p
+          id='text-warning'
+          className={options && (options.length > 0 ? 'hidden' : '')}
+        >
+          {WARNING_MSG}
+        </p>
+      )}
     </>
   );
 };
