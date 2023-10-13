@@ -509,7 +509,7 @@ main {
     }
 
     #feels-like {
-      font-size: 7vw;
+      font-size: clamp(5vw, 6.5vw, 80px);
     }
   }
 }
