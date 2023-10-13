@@ -509,7 +509,7 @@ main {
     }
 
     #feels-like {
-      font-size: 7vw;
+      font-size: max(7vw, 80px);
     }
   }
 }
