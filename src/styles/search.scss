@@ -3,7 +3,7 @@
 #header-container {
   height: 100vh;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 #location-search {
@@ -97,10 +97,6 @@
 // ======= MEDIA QUERIES =======
 
 @media screen and (orientation: landscape) {
-  #header-container {
-    align-items: center;
-  }
-
   #location-search {
     margin-block-start: 0;
   }
