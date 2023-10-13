@@ -1,24 +1,60 @@
 import { useAppContext } from '../../../hooks/useAppContext';
 import { useNavigate } from 'react-router-dom';
 import { ForecastType, OptionType } from '../../../types';
+import { useEffect, useRef } from 'react';
 
-const SearchButton = (): JSX.Element => {
+type Props = {
+  shouldFocus: boolean;
+  shouldExecuteClick: boolean;
+  setShouldExecuteClick: (shouldExecute: boolean) => void;
+};
+const SearchButton = ({
+  shouldFocus,
+  shouldExecuteClick,
+  setShouldExecuteClick,
+}: Props): JSX.Element => {
   const { location, getForecast, setSearchInput } = useAppContext() as {
     location: OptionType | null;
     getForecast: (value: OptionType | null) => Promise<ForecastType>;
     setSearchInput: (value: string | undefined) => void;
   };
 
+  const searchButton = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (shouldFocus && searchButton.current) {
+      searchButton.current.focus();
+      setShouldExecuteClick(false);
+    }
+  }, [shouldFocus, setShouldExecuteClick]);
+
   const navigate = useNavigate();
 
   const handleClick = async () => {
-    await getForecast(location);
-    navigate('forecast');
-    setSearchInput('');
+    if (shouldExecuteClick) {
+      await getForecast(location);
+      navigate('forecast');
+      setSearchInput('');
+    }
+    setShouldExecuteClick(true); // reset the flag after click
+  };
+
+  const handleButtonKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'Enter') {
+      handleClick();
+    }
   };
 
   return (
-    <button id='search-btn' name='search' type='button' onClick={handleClick}>
+    <button
+      ref={searchButton}
+      id='search-btn'
+      name='search'
+      type='button'
+      onClick={handleClick}
+      onKeyDown={handleButtonKeyDown}
+      tabIndex={0}
+    >
       <svg
         role='graphics-symbol'
         aria-hidden='true'

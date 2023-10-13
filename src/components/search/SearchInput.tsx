@@ -2,7 +2,12 @@ import { ChangeEvent } from 'react';
 import { useAppContext } from '../../hooks/useAppContext';
 import SearchOptions from './SearchOptions';
 
-const SearchInput = (): JSX.Element => {
+
+type Props = {
+  setShouldFocusSearchButton: (shouldFocus: boolean) => void
+  setShouldExecuteClick: (shouldExecute: boolean) => void
+}
+const SearchInput = ({ setShouldFocusSearchButton, setShouldExecuteClick }: Props): JSX.Element => {
   const { searchInput, onInputChange } = useAppContext() as {
     searchInput: string | undefined;
     onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -11,12 +16,14 @@ const SearchInput = (): JSX.Element => {
   return (
     <>
       <input
+        name='searchInput'
+        autoFocus
         type='search'
         value={searchInput || ''}
         placeholder='Search for a location'
         onChange={(e) => onInputChange(e)}
       />
-      {searchInput && searchInput?.length > 0 && <SearchOptions />}
+      {searchInput && searchInput?.length > 0 && <SearchOptions setShouldFocusSearchButton={setShouldFocusSearchButton} setShouldExecuteClick={setShouldExecuteClick}/>}
     </>
   );
 };
